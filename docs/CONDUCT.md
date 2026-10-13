@@ -87,4 +87,4 @@ For answers to common questions about this code of conduct, see the FAQ at [http
 [translations]: https://www.contributor-covenant.org/translations
 
 ![written 
-signature](https://drive.google.com/file/d/1Z1Htu14gW70UtGktqZvmyypMpc_kzfwE/view?usp=sharing)
+signature](Screenshot%202026-10-13%20084850.png)
