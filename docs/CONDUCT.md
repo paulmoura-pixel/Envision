@@ -26,7 +26,12 @@ Examples of unacceptable behavior include:
 
 Additions and Amendments:
 * If a group member is going to be late to a meeting, they must get in contact with the group prior to the meeting time.
-* Meeting Times: 9:30am Tuesdays after 305.(subject to change)
+* Meeting Times: 1:00pm-3:00pm in the library.(subject to change)
+* Decisions will be made on a majority rules basis. Each team member has an equal amount of say for all decisions.
+* Assignments will be split up equally between group members. When a task is distributed a team members specialized skill will be taken into account.
+* During formal meetings notes will be taken by a team member in order to keep all information preserved. All notes will be saved in the google drive.
+* During meetings it is expected that all team members are present, active, and respectful to all in the group.
+* Late work will not be tolerated. If a team member is unable to make a deadline they are expected to let the team know so accommodations can be made. 
 
 ## Enforcement Responsibilities
 
