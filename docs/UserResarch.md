@@ -27,4 +27,21 @@ Eliminating ads would also reduce our reliance on internet as most ads normally 
 
 Dominic Baez:
 
+Observation:
+Most people have problems with tracking/logging the information. People struggled with tracking the right amount of calories, workouts, macros, etc. Some even lack experience with tracking and may not know what to write down. The app would provide a more organized and guided system to logging and tracking making the experience more conducive with better practices.
+
+Supporting Data:
+When asked what inconveniences or difficulties they experienced last time they had worked out or planned a meal, they responded with the following:
+
+“I've never really tracked a workout or a meal.”
+
+“Usually those types of apps have a lot going on an no way to see what you need quickly”
+
+“Its hard to keep track of macros and nutrients”
+
+“constantly keeping track of exact portions. Limits number of meals I can have during the week, with the food I have and enjoy”
+
+“I had not done a good job keeping track of what I ate, so I had no idea how many calories i was eating and if I was in deficit or not.”
+
+
 Isaac Gbaba:
