@@ -45,3 +45,9 @@ When asked what inconveniences or difficulties they experienced last time they h
 
 
 Isaac Gbaba:
+Observation Statement: The survey results show that users want meal tracking, workout logging, and progress monitoring, but many people still do not use fitness apps. This suggests that offering the right features is not enough; Envision must make onboarding and daily tracking simple, guided, and quick for both coaches and trainees.
+
+Supporting Data: 13/20 participants (65%) wanted meal tracking, 11/20 (55%) wanted workout logging, and 11/20 (55%) wanted to view progress over time. At the same time, 10/20 participants (50%) said they do not currently use an app to track their workouts.
+
+Team Action : We plan to create two clear onboarding paths. Coaches will create a training space and invite clients using a code or QR code, while trainees will use that code to join their coach. Envision will also make food logging easier through photo, voice, and manual entry, with a simple dashboard that shows workouts, nutrition, and progress without unnecessary ads or clutter.
+
