@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "989290980604",
+    "project_id": "envision-8wd5is",
+    "storage_bucket": "envision-8wd5is.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989290980604:android:1b217c22fb16bdb4306379",
+        "android_client_info": {
+          "package_name": "com.mycompany.envision"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFbBn4G_tpN0DLX7_Z2wk0Vh0s5nR0e2Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
