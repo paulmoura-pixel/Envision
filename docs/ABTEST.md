@@ -69,13 +69,15 @@ Variation A — Workout Navigation Button (Control)
 The home screen displays a button labeled “View Today’s Workout.”
 Users must select this button to navigate to their assigned workout plan.
 
-![Variation A - Workout Navigation Button](./images/variation_a.png)
+<img src="https://raw.githubusercontent.com/paulmoura-pixel/Envision/refs/heads/main/docs/images/%20%20%20%20variation_a.png" alt="Description of the image">
+
 
 Variation B — Daily Workout Preview (Test)
 The home screen displays a preview of the assigned workout, including its name and exercises.
 Users can select the preview to access their complete workout plan.
 
-![Variation B - Daily Workout Preview](./images/variation-b.png)
+<img src="https://github.com/paulmoura-pixel/Envision/blob/main/docs/images/%20%20%20%20variation-b.png?raw=true" alt="Description of the image">
+
 
 Expected Outcome:
 
