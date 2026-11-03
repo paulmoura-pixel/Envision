@@ -261,3 +261,86 @@ complete their assigned exercises. If successful, the results will help
 the Envision team determine whether guided workout completion should
 become the standard workout experience.
 
+Dominic Baez
+A/B Test: Account Creation
+A/B Title: Coach Code vs. No Coach Code
+User Story: US-03 Profile Creation
+
+# Envision A/B Test: Skippable Trainer Code in Profile Setup
+
+## Metrics
+
+### 1. Task Success
+- **Profile Completion Rate:** Percentage of new users who save a valid profile during their first session.
+- **Time to Complete Profile:** Average time between starting profile setup and saving a valid profile.
+- **Trainer Code Entry Rate:** Percentage of new users who successfully enter their trainer's code.
+
+### 2. Engagement
+- **Daily Active Users:** Number of unique users interacting with Envision each day.
+- **Workout Plan Views:** Number of times new users open their assigned workout plans after finishing their profile.
+
+### 3. Retention
+- **Average Logins per Week:** Average number of times users return to Envision each week.
+- **Day-7 Retention:** Percentage of new users who return to Envision 7 days after signing up.
+
+These measurements align with our HEART goals of helping trainees set up their accounts quickly, connect with their trainers, and build consistent fitness tracking habits from their first session.
+
+## Hypothesis
+
+We believe that letting users skip the trainer code step during profile setup will increase the percentage of new users who complete their profile compared to requiring the code. Users who do not have their code on hand at signup will no longer get stuck or abandon the app, so we expect higher Task Success and Engagement. We also expect most skippers to add their code later, so the trainer link rate should not drop meaningfully.
+
+## What Problem Are We Trying to Solve, and What's Its Impact?
+
+The profile flow already uses short steps, but the trainer code step is required. A new user who does not have their code yet (for example, the trainer has not sent it) cannot finish setup and may leave before ever reaching a workout. Every abandoned setup is a lost user who never logs a workout. This experiment will show whether removing that hard stop improves completion without hurting how many trainees end up connected to their trainers.
+
+## Experiment
+
+We will use Firebase Remote Config and Firebase A/B Testing to randomly assign eligible users to one of two versions of the trainer code step.
+
+- **Variation A (Control):** Trainer code step is required to finish profile setup.
+- **Variation B (Treatment):** Trainer code step includes a "Skip for now" option. Skippers can enter their code later from their profile, with a reminder on the home screen.
+
+Everything else stays the same in both variations: the profile prompt appears within 2 seconds, the trainer code prompt within 3 seconds, and validation and network error messages appear within 2 seconds with the option to retry.
+
+## Target Audience
+
+New users who have successfully created an Envision account and are logging in for the first time.
+
+## Experiment Distribution
+
+- 50% of eligible users will see Variation A.
+- 50% of eligible users will see Variation B.
+
+We will use an equal distribution to compare both designs under similar conditions. Each user will remain assigned to the same variation throughout the experiment.
+
+## Experiment Duration
+
+The experiment will run for approximately two weeks, or until about 1,500 users per variation have participated, whichever takes longer. Two full weeks captures weekday and weekend behavior, and Day-7 metrics need a full week of follow-up after the last user enters.
+
+## Firebase Analytics Tracking
+
+We will track the following events:
+
+| Firebase Event | Purpose | HEART Category |
+|---|---|---|
+| `profile_setup_start` | Records when a new user begins profile creation. | Task Success |
+| `trainer_code_prompt_view` | Records when the trainer code step is shown. | Engagement |
+| `trainer_code_entered` | Records when a valid trainer code is submitted (parameter: `source` = `setup` or `later`). | Task Success |
+| `trainer_code_skipped` | Records when a user taps "Skip for now" (Variation B only). | Task Success |
+| `profile_setup_complete` | Records when a user saves a valid profile (parameters: `duration_sec`, `trainer_code_entered`). | Task Success |
+| `workout_opened` | Records when a user opens their assigned workout. | Engagement |
+| `user_login` | Records when a user successfully logs into Envision. | Retention |
+
+Firebase Analytics will also be used to calculate DAU based on user activity. We will measure the time between `profile_setup_start` and `profile_setup_complete` to evaluate how quickly users finish setup, and the share of skippers who later fire `trainer_code_entered` with `source = later`.
+
+## Success Criteria
+
+We will consider Variation B more successful if:
+
+- A higher percentage of users complete their profile.
+- Users take the same or less time to finish setup.
+- The trainer code linked rate by Day 7 stays consistent or within an acceptable drop (for example, no more than 5 percentage points below Variation A).
+- Workout plan views and workouts opened remain consistent or improve.
+
+We will also monitor DAU, Day-7 retention, and average logins per week for changes in Engagement and Retention. If B raises completion but many skippers never add their code, we will investigate stronger reminders before shipping. If the experiment has too few participants to produce reliable results, we will treat the findings as preliminary.
+
