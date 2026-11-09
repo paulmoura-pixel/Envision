@@ -33,6 +33,8 @@ Create two screenshots/mockups of this same card with only that text changed bef
 
 **Acceptance criteria:** Parameter and fallback work; both rendered variants are verified; every test attempt has platform/variant/installation evidence; event counts reconcile with test actions; no client data or raw invite tokens enter analytics; client–coach access restrictions remain enforced.
 
+#####################################################################################################################
+
 Jonathan Conceicao
 A/B Test: Daily Workout Access
 A/B Test Name
