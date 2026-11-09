@@ -1,3 +1,38 @@
+
+
+---
+
+### Isaac Gbaba — Workout CTA wording
+
+**A/B Test Name:** “View Today's Workout” versus “Start Today's Workout”.
+
+**User Story Number:** US-04 — View Daily Workout Plan ([issue #5](https://github.com/paulmoura-pixel/Envision/issues/5)).
+
+**Metrics:** Primary: workout access CTR as defined in METRICS.md. Secondary: successful workout-open rate and workouts logged per eligible client. Guardrails: workout load failures and time from CTA click to successful workout display. DAU and seven-day returning-user retention are exploratory context.
+
+**Hypothesis and problem:** Clients may interpret “View” as passive browsing rather than the next action in their training session. Changing only the CTA verb to “Start” may increase the share of workout CTA impressions that lead to a click. This experiment tests wording only; it does not change invitation requirements, code expiry, authorization, workout content, placement, colors, or navigation.
+
+**Experiment using Firebase capabilities:** Read string Remote Config parameter `workout_cta_text`, default `View Today's Workout`. Baseline uses the default; treatment uses `Start Today's Workout`. Fetch and activate configuration before showing the measured CTA, using the baseline as the offline/error fallback. Keep the default unchanged while the test runs. For the course demonstration, expose 100% of eligible installations and assign 50/50 across variants. Use separate Android and web configurations/experiments where supported by the project and verify actual assignment on each platform. If the console cannot target a platform, document that limitation rather than claim an experiment exists. Do not change the currently running `isCodeRequired` experiment to implement this proposal.
+
+**Audience:** Authenticated clients linked to a coach who have an assigned workout for the selected date. Coaches, unlinked accounts, and “no workout scheduled” sessions do not enter the denominator. Invite validation is identical in both groups; an expired, used, invalid, or revoked invite is rejected under the same rules.
+
+**Tracking:** `workout_cta_view`, `workout_cta_click`, `workout_opened`, `workout_logged`, and `workout_load_failed`. Include variant, platform, app version, and non-personal impression/log IDs where applicable. Fire success events after the corresponding load/save succeeds. Deduplicate by impression/log ID. Confirm events appear in Firebase before collecting results. Use an explicit test display of the variant and installation identifier so screenshots demonstrate actual assignment; hide it in normal production UI.
+
+**Variations / mockup specification:**
+
+| Element | Baseline | Treatment |
+|---|---|---|
+| Workout card title | Today's Workout | Today's Workout |
+| Workout data and notes | Same assigned workout | Same assigned workout |
+| CTA text | View Today's Workout | Start Today's Workout |
+| CTA destination | Assigned workout detail | Assigned workout detail |
+
+Create two screenshots/mockups of this same card with only that text changed before design submission; this table specifies the intended design and is not evidence of an implemented variation.
+
+**Duration and analysis:** Run for 14 days for a future product evaluation; complete the course demonstration using recorded test installations without presenting four testers as conclusive product evidence. Report dates, eligible users/installations per variant, impressions, clicks, CTR, successful opens, logs, and failures. A proposed practical improvement is at least 5 percentage points in CTR without degraded load success. Report uncertainty and extend the study if the sample is insufficient; do not declare a winner from a handful of test sessions. Day-7 retention requires seven days of follow-up.
+
+**Acceptance criteria:** Parameter and fallback work; both rendered variants are verified; every test attempt has platform/variant/installation evidence; event counts reconcile with test actions; no client data or raw invite tokens enter analytics; client–coach access restrictions remain enforced.
+
 Jonathan Conceicao
 A/B Test: Daily Workout Access
 A/B Test Name
