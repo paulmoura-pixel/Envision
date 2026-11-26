@@ -1,0 +1,210 @@
+{
+  "project_info": {
+    "project_number": "989290980604",
+    "project_id": "envision-8wd5is",
+    "storage_bucket": "envision-8wd5is.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989290980604:android:5dde4083cb9fef07306379",
+        "android_client_info": {
+          "package_name": "com.envision.io"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989290980604-541g4ggjof6edhjkkq6msjbrd9q3uogi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.envision.io",
+            "certificate_hash": "45858fdc8a4a2ff27bea784fc0a8b95f7833d19a"
+          }
+        },
+        {
+          "client_id": "989290980604-pledf5nmsa8ncp3u4kh3qtur0rlee0n3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.envision.io",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "989290980604-rcpol6p6rdme4rk9goifd972qo4131si.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.envision.io",
+            "certificate_hash": "12023c1e48fa1ec5cc88b5a3b66855344e547ca6"
+          }
+        },
+        {
+          "client_id": "989290980604-si568u1a5lvs4bcpo0m452os7o5b2e4m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.envision.io",
+            "certificate_hash": "6f6f42113db9f352e2ec891faaae407bb616f71c"
+          }
+        },
+        {
+          "client_id": "989290980604-01oi85t9gadick93tivgrhh4cvmtosnj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFbBn4G_tpN0DLX7_Z2wk0Vh0s5nR0e2Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989290980604-01oi85t9gadick93tivgrhh4cvmtosnj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "989290980604-j2122o8mbeqsj3mt7pqjo8pl79n8chju.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "edu.uri.csc305.f26t3"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989290980604:android:1b217c22fb16bdb4306379",
+        "android_client_info": {
+          "package_name": "com.mycompany.envision"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989290980604-4se72p4s3n7v5oifmo7mdopst9on3naa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.envision",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "989290980604-01oi85t9gadick93tivgrhh4cvmtosnj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFbBn4G_tpN0DLX7_Z2wk0Vh0s5nR0e2Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989290980604-01oi85t9gadick93tivgrhh4cvmtosnj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "989290980604-j2122o8mbeqsj3mt7pqjo8pl79n8chju.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "edu.uri.csc305.f26t3"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989290980604:android:d490697d877686f1306379",
+        "android_client_info": {
+          "package_name": "edu.uri.csc305.F26T3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989290980604-fu9gkiv60rro9eocnkveo3kdochsut3f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.uri.csc305.F26T3",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "989290980604-01oi85t9gadick93tivgrhh4cvmtosnj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFbBn4G_tpN0DLX7_Z2wk0Vh0s5nR0e2Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989290980604-01oi85t9gadick93tivgrhh4cvmtosnj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "989290980604-j2122o8mbeqsj3mt7pqjo8pl79n8chju.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "edu.uri.csc305.f26t3"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989290980604:android:3a0e80104950b400306379",
+        "android_client_info": {
+          "package_name": "edu.uri.csc305.f26t3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989290980604-hct4lccs1h33l9913ldtajupt5t3115b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.uri.csc305.f26t3",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "989290980604-01oi85t9gadick93tivgrhh4cvmtosnj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFbBn4G_tpN0DLX7_Z2wk0Vh0s5nR0e2Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989290980604-01oi85t9gadick93tivgrhh4cvmtosnj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "989290980604-j2122o8mbeqsj3mt7pqjo8pl79n8chju.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "edu.uri.csc305.f26t3"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
