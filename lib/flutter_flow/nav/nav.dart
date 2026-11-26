@@ -4,10 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 
+
 import '/auth/base_auth_user_provider.dart';
 
-import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 import '/index.dart';
@@ -72,63 +71,159 @@ class AppStateNotifier extends ChangeNotifier {
   }
 }
 
-GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
+GoRouter createRouter(AppStateNotifier appStateNotifier, [Widget? entryPage]) =>
+    GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? entryPage ?? EnvisionAuthGateWidget()
+          : BEnvisionWelcomeProWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? entryPage ?? EnvisionAuthGateWidget()
+              : BEnvisionWelcomeProWidget(),
         ),
         FFRoute(
-          name: LoginWidget.routeName,
-          path: LoginWidget.routePath,
-          builder: (context, params) => LoginWidget(),
-        ),
-        FFRoute(
-          name: ProfileWidget.routeName,
-          path: ProfileWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'profile')
-              : ProfileWidget(),
-        ),
-        FFRoute(
-          name: WorkoutsWidget.routeName,
-          path: WorkoutsWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'workouts')
-              : WorkoutsWidget(),
-        ),
-        FFRoute(
-          name: OnboardingWidget.routeName,
-          path: OnboardingWidget.routePath,
-          builder: (context, params) => OnboardingWidget(),
-        ),
-        FFRoute(
-          name: DetailsWidget.routeName,
-          path: DetailsWidget.routePath,
+          name: ClientConfirmWidget.routeName,
+          path: ClientConfirmWidget.routePath,
           asyncParams: {
-            'workoutDoc': getDoc(['workout'], WorkoutRecord.fromSnapshot),
+            'trainingSpace': getDoc(['users'], UsersRecord.fromSnapshot),
           },
-          builder: (context, params) => DetailsWidget(
-            workoutDoc: params.getParam(
-              'workoutDoc',
+          builder: (context, params) => ClientConfirmWidget(
+            trainingSpace: params.getParam(
+              'trainingSpace',
               ParamType.Document,
+            ),
+            inviteDetails: params.getParam(
+              'inviteDetails',
+              ParamType.JSON,
             ),
           ),
         ),
         FFRoute(
-          name: CompletedWidget.routeName,
-          path: CompletedWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'completed')
-              : CompletedWidget(),
+          name: EnvisionCoachProWidget.routeName,
+          path: EnvisionCoachProWidget.routePath,
+          builder: (context, params) => EnvisionCoachProWidget(),
+        ),
+        FFRoute(
+          name: CEnvisionRoleProWidget.routeName,
+          path: CEnvisionRoleProWidget.routePath,
+          builder: (context, params) => CEnvisionRoleProWidget(),
+        ),
+        FFRoute(
+          name: EnvisionNutritionWidget.routeName,
+          path: EnvisionNutritionWidget.routePath,
+          builder: (context, params) => EnvisionNutritionWidget(),
+        ),
+        FFRoute(
+          name: FitnessClientOnboardingPageWidget.routeName,
+          path: FitnessClientOnboardingPageWidget.routePath,
+          builder: (context, params) => FitnessClientOnboardingPageWidget(),
+        ),
+        FFRoute(
+          name: EnvisionDashboardWidget.routeName,
+          path: EnvisionDashboardWidget.routePath,
+          builder: (context, params) => EnvisionDashboardWidget(),
+        ),
+        FFRoute(
+          name: PlainSolidWhitePageWidget.routeName,
+          path: PlainSolidWhitePageWidget.routePath,
+          builder: (context, params) => PlainSolidWhitePageWidget(),
+        ),
+        FFRoute(
+          name: CoachCompleteWidget.routeName,
+          path: CoachCompleteWidget.routePath,
+          builder: (context, params) => CoachCompleteWidget(),
+        ),
+        FFRoute(
+          name: EmailLoginWidget.routeName,
+          path: EmailLoginWidget.routePath,
+          builder: (context, params) => EmailLoginWidget(),
+        ),
+        FFRoute(
+          name: CoachSpecialtiesWidget.routeName,
+          path: CoachSpecialtiesWidget.routePath,
+          builder: (context, params) => CoachSpecialtiesWidget(),
+        ),
+        FFRoute(
+          name: AEnvisionLaunchWidget.routeName,
+          path: AEnvisionLaunchWidget.routePath,
+          builder: (context, params) => AEnvisionLaunchWidget(),
+        ),
+        FFRoute(
+          name: CoachSetupWidget.routeName,
+          path: CoachSetupWidget.routePath,
+          builder: (context, params) => CoachSetupWidget(),
+        ),
+        FFRoute(
+          name: BEnvisionWelcomeProWidget.routeName,
+          path: BEnvisionWelcomeProWidget.routePath,
+          builder: (context, params) => BEnvisionWelcomeProWidget(),
+        ),
+        FFRoute(
+          name: FitnessOnboardingStepPageWidget.routeName,
+          path: FitnessOnboardingStepPageWidget.routePath,
+          builder: (context, params) => FitnessOnboardingStepPageWidget(),
+        ),
+        FFRoute(
+          name: FitnessOnboardingStepPage2Widget.routeName,
+          path: FitnessOnboardingStepPage2Widget.routePath,
+          builder: (context, params) => FitnessOnboardingStepPage2Widget(),
+        ),
+        FFRoute(
+          name: FitnessOnboardingStepPage3Widget.routeName,
+          path: FitnessOnboardingStepPage3Widget.routePath,
+          builder: (context, params) => FitnessOnboardingStepPage3Widget(),
+        ),
+        FFRoute(
+          name: FitnessOnboardingStepPage4Widget.routeName,
+          path: FitnessOnboardingStepPage4Widget.routePath,
+          builder: (context, params) => FitnessOnboardingStepPage4Widget(),
+        ),
+        FFRoute(
+          name: FitnessOnboardingStepPage5Widget.routeName,
+          path: FitnessOnboardingStepPage5Widget.routePath,
+          builder: (context, params) => FitnessOnboardingStepPage5Widget(),
+        ),
+        FFRoute(
+          name: FitnessOnboardingStepPage6Widget.routeName,
+          path: FitnessOnboardingStepPage6Widget.routePath,
+          builder: (context, params) => FitnessOnboardingStepPage6Widget(),
+        ),
+        FFRoute(
+          name: FitnessOnboardingStepPage7Widget.routeName,
+          path: FitnessOnboardingStepPage7Widget.routePath,
+          builder: (context, params) => FitnessOnboardingStepPage7Widget(),
+        ),
+        FFRoute(
+          name: OnboardingCompleteSuccessPageWidget.routeName,
+          path: OnboardingCompleteSuccessPageWidget.routePath,
+          builder: (context, params) => OnboardingCompleteSuccessPageWidget(),
+        ),
+        FFRoute(
+          name: EnvisionAuthGateWidget.routeName,
+          path: EnvisionAuthGateWidget.routePath,
+          builder: (context, params) => EnvisionAuthGateWidget(),
+        ),
+        FFRoute(
+          name: CoachDashboardWidget.routeName,
+          path: CoachDashboardWidget.routePath,
+          builder: (context, params) => CoachDashboardWidget(),
+        ),
+        FFRoute(
+          name: ClientJoinWidget.routeName,
+          path: ClientJoinWidget.routePath,
+          builder: (context, params) => ClientJoinWidget(
+            code: params.getParam(
+              'code',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -299,7 +394,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/login';
+            return '/envision-welcome-pro';
           }
           return null;
         },
@@ -313,14 +408,13 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
+              ? Container(
+                  color: Colors.white,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/Three_Orange_Slashes_Logo.png',
+                      width: MediaQuery.sizeOf(context).width * 0.55,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 )

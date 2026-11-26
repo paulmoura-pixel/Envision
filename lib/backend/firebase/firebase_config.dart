@@ -10,7 +10,8 @@ Future initFirebase() async {
             projectId: "envision-8wd5is",
             storageBucket: "envision-8wd5is.firebasestorage.app",
             messagingSenderId: "989290980604",
-            appId: "1:989290980604:web:9ea4ca0a6ebeee79306379"));
+            appId: "1:989290980604:web:9ea4ca0a6ebeee79306379",
+            measurementId: "G-VVKHYXG92Y"));
   } else {
     await Firebase.initializeApp();
   }

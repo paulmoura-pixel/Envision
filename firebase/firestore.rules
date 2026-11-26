@@ -1,6 +1,76 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    match /workout/{document} {
+      allow create: if request.resource.data.user == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow read: if resource.data.user == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow write: if resource.data.user == /databases/$(database)/documents/users/$(request.auth.uid);
+      allow delete: if resource.data.user == /databases/$(database)/documents/users/$(request.auth.uid);
+    }
+
+    match /nutrition_goals/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /food_logs/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /workout_plans/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /workout_exercises/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /exercise_logs/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /exercise_video_submissions/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /exercise_feedback/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /progress_photos/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /body_measurements/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
     match /users/{document} {
       allow create: if request.auth.uid == document;
       allow read: if request.auth.uid == document;
@@ -8,11 +78,53 @@ service cloud.firestore {
       allow delete: if false;
     }
 
-    match /workout/{document} {
-      allow create: if request.resource.data.user == /databases/$(database)/documents/users/$(request.auth.uid);
-      allow read: if resource.data.user == /databases/$(database)/documents/users/$(request.auth.uid);
-      allow write: if resource.data.user == /databases/$(database)/documents/users/$(request.auth.uid);
-      allow delete: if resource.data.user == /databases/$(database)/documents/users/$(request.auth.uid);
+    match /coach_daily_notes/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /meal_comments/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /invitations/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /usernames/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /coach_clients/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /notifications/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /onboarding_drafts/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
     }
   }
 }

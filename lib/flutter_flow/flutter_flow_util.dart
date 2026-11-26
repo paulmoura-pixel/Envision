@@ -19,6 +19,7 @@ export 'keep_alive_wrapper.dart';
 export 'lat_lng.dart';
 export 'place.dart';
 export 'uploaded_file.dart';
+export '../app_state.dart';
 export 'flutter_flow_model.dart';
 export 'dart:math' show min, max;
 export 'dart:typed_data' show Uint8List;
@@ -27,7 +28,9 @@ export 'package:intl/intl.dart';
 export 'package:cloud_firestore/cloud_firestore.dart'
     show DocumentReference, FirebaseFirestore;
 export 'package:page_transition/page_transition.dart';
+export '/backend/firebase_analytics/analytics.dart';
 export 'nav/nav.dart';
+export 'firebase_remote_config_util.dart';
 
 T valueOrDefault<T>(T? value, T defaultValue) =>
     (value is String && value.isEmpty) || value == null ? defaultValue : value;
@@ -40,151 +43,6 @@ String dateTimeFormat(String format, DateTime? dateTime, {String? locale}) {
     return timeago.format(dateTime, locale: locale, allowFromNow: true);
   }
   return DateFormat(format, locale).format(dateTime);
-}
-
-Theme wrapInMaterialDatePickerTheme(
-  BuildContext context,
-  Widget child, {
-  required Color headerBackgroundColor,
-  required Color headerForegroundColor,
-  required TextStyle headerTextStyle,
-  required Color pickerBackgroundColor,
-  required Color pickerForegroundColor,
-  required Color selectedDateTimeBackgroundColor,
-  required Color selectedDateTimeForegroundColor,
-  required Color actionButtonForegroundColor,
-  required double iconSize,
-}) {
-  final baseTheme = Theme.of(context);
-  final dateTimeMaterialStateForegroundColor =
-      WidgetStateProperty.resolveWith((states) {
-    if (states.contains(WidgetState.disabled)) {
-      return pickerForegroundColor.applyAlpha(0.60);
-    }
-    if (states.contains(WidgetState.selected)) {
-      return selectedDateTimeForegroundColor;
-    }
-    if (states.isEmpty) {
-      return pickerForegroundColor;
-    }
-    return null;
-  });
-
-  final dateTimeMaterialStateBackgroundColor =
-      WidgetStateProperty.resolveWith((states) {
-    if (states.contains(WidgetState.selected)) {
-      return selectedDateTimeBackgroundColor;
-    }
-    return null;
-  });
-
-  return Theme(
-    data: baseTheme.copyWith(
-      colorScheme: baseTheme.colorScheme.copyWith(
-        onSurface: pickerForegroundColor,
-      ),
-      disabledColor: pickerForegroundColor.applyAlpha(0.3),
-      textTheme: baseTheme.textTheme.copyWith(
-        headlineSmall: headerTextStyle,
-        headlineMedium: headerTextStyle,
-      ),
-      iconTheme: baseTheme.iconTheme.copyWith(
-        size: iconSize,
-      ),
-      textButtonTheme: TextButtonThemeData(
-        style: ButtonStyle(
-            foregroundColor: WidgetStatePropertyAll(
-              actionButtonForegroundColor,
-            ),
-            overlayColor: WidgetStateProperty.resolveWith((states) {
-              if (states.contains(WidgetState.hovered)) {
-                return actionButtonForegroundColor.applyAlpha(0.04);
-              }
-              if (states.contains(WidgetState.focused) ||
-                  states.contains(WidgetState.pressed)) {
-                return actionButtonForegroundColor.applyAlpha(0.12);
-              }
-              return null;
-            })),
-      ),
-      datePickerTheme: DatePickerThemeData(
-        backgroundColor: pickerBackgroundColor,
-        headerBackgroundColor: headerBackgroundColor,
-        headerForegroundColor: headerForegroundColor,
-        weekdayStyle: baseTheme.textTheme.labelMedium!.copyWith(
-          color: pickerForegroundColor,
-        ),
-        dayBackgroundColor: dateTimeMaterialStateBackgroundColor,
-        todayBackgroundColor: dateTimeMaterialStateBackgroundColor,
-        yearBackgroundColor: dateTimeMaterialStateBackgroundColor,
-        dayForegroundColor: dateTimeMaterialStateForegroundColor,
-        todayForegroundColor: dateTimeMaterialStateForegroundColor,
-        yearForegroundColor: dateTimeMaterialStateForegroundColor,
-      ),
-    ),
-    child: child,
-  );
-}
-
-Theme wrapInMaterialTimePickerTheme(
-  BuildContext context,
-  Widget child, {
-  required Color headerBackgroundColor,
-  required Color headerForegroundColor,
-  required TextStyle headerTextStyle,
-  required Color pickerBackgroundColor,
-  required Color pickerForegroundColor,
-  required Color selectedDateTimeBackgroundColor,
-  required Color selectedDateTimeForegroundColor,
-  required Color actionButtonForegroundColor,
-  required double iconSize,
-}) {
-  final baseTheme = Theme.of(context);
-  return Theme(
-    data: baseTheme.copyWith(
-      iconTheme: baseTheme.iconTheme.copyWith(
-        size: iconSize,
-      ),
-      textButtonTheme: TextButtonThemeData(
-        style: ButtonStyle(
-            foregroundColor: WidgetStatePropertyAll(
-              actionButtonForegroundColor,
-            ),
-            overlayColor: WidgetStateProperty.resolveWith((states) {
-              if (states.contains(WidgetState.hovered)) {
-                return actionButtonForegroundColor.applyAlpha(0.04);
-              }
-              if (states.contains(WidgetState.focused) ||
-                  states.contains(WidgetState.pressed)) {
-                return actionButtonForegroundColor.applyAlpha(0.12);
-              }
-              return null;
-            })),
-      ),
-      timePickerTheme: baseTheme.timePickerTheme.copyWith(
-        backgroundColor: pickerBackgroundColor,
-        hourMinuteTextColor: pickerForegroundColor,
-        dialHandColor: selectedDateTimeBackgroundColor,
-        dialTextColor: WidgetStateColor.resolveWith((states) =>
-            states.contains(WidgetState.selected)
-                ? selectedDateTimeForegroundColor
-                : pickerForegroundColor),
-        dayPeriodBorderSide: BorderSide(
-          color: pickerForegroundColor,
-        ),
-        dayPeriodTextColor: WidgetStateColor.resolveWith((states) =>
-            states.contains(WidgetState.selected)
-                ? selectedDateTimeForegroundColor
-                : pickerForegroundColor),
-        dayPeriodColor: WidgetStateColor.resolveWith((states) =>
-            states.contains(WidgetState.selected)
-                ? selectedDateTimeBackgroundColor
-                : Colors.transparent),
-        entryModeIconColor: pickerForegroundColor,
-      ),
-    ),
-    child: child,
-  );
 }
 
 Future launchURL(String url) async {
@@ -360,8 +218,8 @@ bool get isiOS => !kIsWeb && Platform.isIOS;
 bool get isWeb => kIsWeb;
 
 const kBreakpointSmall = 479.0;
-const kBreakpointMedium = 767.0;
-const kBreakpointLarge = 991.0;
+const kBreakpointMedium = 899.0;
+const kBreakpointLarge = 1199.0;
 bool isMobileWidth(BuildContext context) =>
     MediaQuery.sizeOf(context).width < kBreakpointSmall;
 bool responsiveVisibility({
@@ -442,7 +300,8 @@ void showSnackbar(
                 ),
               ),
             ),
-          Text(message),
+          // A message longer than one line wraps instead of overflowing.
+          Flexible(child: Text(message)),
         ],
       ),
       duration: Duration(seconds: duration),

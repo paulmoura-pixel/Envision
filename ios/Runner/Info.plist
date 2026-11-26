@@ -30,7 +30,7 @@
             <string>Editor</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <!--FF_REVERSED_CLIENT_ID-->
+                <string>com.googleusercontent.apps.989290980604-p874acafps09b6lrq32p1qvm1ni7jpfj</string>
                 
             </array>
         </dict>
@@ -54,6 +54,27 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneClassName</key>
+					<string>UIWindowScene</string>
+					<key>UISceneConfigurationName</key>
+					<string>flutter</string>
+					<key>UISceneDelegateClassName</key>
+					<string>FlutterSceneDelegate</string>
+					<key>UISceneStoryboardFile</key>
+					<string>Main</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 
@@ -61,7 +82,8 @@
     <string>In order to take a picture or video, this app requires permission to access the camera.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>In order to upload data, this app requires permission to access the photo library.</string>
-
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>Envision uses your location to let your coach see when you arrive at the gym.</string>
 
 
 

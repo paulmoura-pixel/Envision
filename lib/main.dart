@@ -1,3 +1,4 @@
+import 'package:provider/provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,6 @@ import 'auth/firebase_auth/auth_util.dart';
 import 'backend/firebase/firebase_config.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
-import 'index.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,16 +20,28 @@ void main() async {
 
   await FlutterFlowTheme.initialize();
 
-  runApp(MyApp());
+  final appState = FFAppState(); // Initialize FFAppState
+  await appState.initializePersistedState();
+
+  await initializeFirebaseRemoteConfig();
+
+  runApp(ChangeNotifierProvider(
+    create: (context) => appState,
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key, this.entryPage});
+
   // This widget is the root of your application.
   @override
   State<MyApp> createState() => _MyAppState();
 
   static _MyAppState of(BuildContext context) =>
       context.findAncestorStateOfType<_MyAppState>()!;
+
+  final Widget? entryPage;
 }
 
 class MyAppScrollBehavior extends MaterialScrollBehavior {
@@ -68,7 +80,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     _appStateNotifier = AppStateNotifier.instance;
-    _router = createRouter(_appStateNotifier);
+    _router = createRouter(_appStateNotifier, widget.entryPage);
     userStream = envisionFirebaseUserStream()
       ..listen((user) {
         _appStateNotifier.update(user);
@@ -114,89 +126,6 @@ class _MyAppState extends State<MyApp> {
       ),
       themeMode: _themeMode,
       routerConfig: _router,
-    );
-  }
-}
-
-class NavBarPage extends StatefulWidget {
-  NavBarPage({
-    Key? key,
-    this.initialPage,
-    this.page,
-    this.disableResizeToAvoidBottomInset = false,
-  }) : super(key: key);
-
-  final String? initialPage;
-  final Widget? page;
-  final bool disableResizeToAvoidBottomInset;
-
-  @override
-  _NavBarPageState createState() => _NavBarPageState();
-}
-
-/// This is the private State class that goes with NavBarPage.
-class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'profile';
-  late Widget? _currentPage;
-
-  @override
-  void initState() {
-    super.initState();
-    _currentPageName = widget.initialPage ?? _currentPageName;
-    _currentPage = widget.page;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final tabs = {
-      'completed': CompletedWidget(),
-      'profile': ProfileWidget(),
-      'workouts': WorkoutsWidget(),
-    };
-    final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
-
-    return Scaffold(
-      resizeToAvoidBottomInset: !widget.disableResizeToAvoidBottomInset,
-      body: _currentPage ?? tabs[_currentPageName],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (i) => safeSetState(() {
-          _currentPage = null;
-          _currentPageName = tabs.keys.toList()[i];
-        }),
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        selectedItemColor: FlutterFlowTheme.of(context).primary,
-        unselectedItemColor: FlutterFlowTheme.of(context).secondaryText,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.checklist_sharp,
-              size: 24.0,
-            ),
-            label: 'Completed',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              size: 24.0,
-            ),
-            label: 'Home',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.list,
-              size: 30.0,
-            ),
-            label: 'Workouts',
-            tooltip: '',
-          )
-        ],
-      ),
     );
   }
 }
